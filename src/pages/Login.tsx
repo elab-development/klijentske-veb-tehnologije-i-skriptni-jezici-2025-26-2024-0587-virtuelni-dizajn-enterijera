@@ -1,0 +1,115 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
+
+function Login() {
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  return (
+    <div
+      style={{
+        height: "100vh",
+        backgroundImage: `url("https://images.unsplash.com/photo-1749464251742-107093fc5650?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "450px",
+          backgroundColor: "white",
+          padding: "40px",
+          borderRadius: "20px",
+        }}
+      >
+        <h1 style={{ textAlign: "center", marginBottom: "10px" }}>
+          Interiorly
+        </h1>
+
+        <p style={{ textAlign: "center", marginBottom: "30px" }}>
+          Prijavi se
+        </p>
+
+        <label>Email</label>
+        <input
+          type="email"
+          placeholder="you@example.com"
+          style={{
+            width: "100%",
+            padding: "12px",
+            marginTop: "8px",
+            marginBottom: "20px",
+            boxSizing: "border-box",
+          }}
+        />
+
+        <label>Lozinka</label>
+        <div style={{ position: "relative", marginTop: "8px", marginBottom: "20px" }}>
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="********"
+            style={{
+              width: "100%",
+              padding: "12px",
+              paddingRight: "48px",
+              boxSizing: "border-box",
+            }}
+          />
+          <button
+            onClick={() => setShowPassword(!showPassword)}
+            style={{
+              position: "absolute",
+              right: "12px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "#888",
+              display: "flex",
+              alignItems: "center",
+              padding: 0,
+            }}
+          >
+            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+          </button>
+        </div>
+
+        <button
+          onClick={() => navigate("/home")}
+          style={{
+            width: "100%",
+            padding: "14px",
+            backgroundColor: "#2563eb",
+            color: "white",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+          }}
+        >
+          Potvrdi
+        </button>
+
+        <p style={{ textAlign: "center", marginTop: "20px" }}>
+          Novi korisnik?{" "}
+          <Link
+            to="/register"
+            style={{
+              color: "#2563eb",
+              fontWeight: "bold",
+              textDecoration: "none",
+            }}
+          >
+            Registruj se
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default Login;
