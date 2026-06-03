@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
+import Dugme from "../components/Dugme";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -102,21 +103,11 @@ function Login() {
             {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
           </button>
         </div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+  <Dugme tekst="Potvrdi" onClick={handleLogin} />
+</div>
 
-        <button
-          onClick={handleLogin}
-          style={{
-            width: "100%",
-            padding: "14px",
-            backgroundColor: "#2563eb",
-            color: "white",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-          }}
-        >
-          Potvrdi
-        </button>
+        
 
         <p style={{ textAlign: "center", marginTop: "20px" }}>
           Novi korisnik?{" "}

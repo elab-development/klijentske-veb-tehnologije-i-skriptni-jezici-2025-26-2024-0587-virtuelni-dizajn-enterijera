@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { User, Mail, Edit2, Save } from "lucide-react";
+import { Korisnik } from "../models/KorisnikModel";
+import Dugme from "../components/Dugme";
 
 function Podaci() {
   const [isEditing, setIsEditing] = useState(false);
@@ -32,35 +34,26 @@ const [omiljeneSlike, setOmiljeneSlike] = useState<{ id: number; naziv: string; 
     return () => window.removeEventListener("storage", sync);
   }, []);
 
-  const handleSave = () => {
-    const userData = getUserData();
-    localStorage.setItem("user", JSON.stringify({ ...userData, name: profile.name, email: profile.email }));
-    setIsEditing(false);
-  };
-
+ const handleSave = () => {
+  const korisnik = new Korisnik(profile.name, profile.email);
+  if (!korisnik.isValid()) {
+    alert("Unesite ispravno ime i email!");
+    return;
+  }
+  const userData = getUserData();
+  localStorage.setItem("user", JSON.stringify({ ...userData, name: korisnik.ime, email: korisnik.email }));
+  setIsEditing(false);
+};
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#f3f4f6", paddingTop: "100px", paddingLeft: "40px", paddingRight: "40px", paddingBottom: "40px" }}>
       <div style={{ maxWidth: "800px", margin: "0 auto" }}>
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "30px" }}>
           <h1 style={{ fontSize: "36px", color: "#111827" }}>Korisnički profil</h1>
-          <button
-            onClick={() => isEditing ? handleSave() : setIsEditing(true)}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              backgroundColor: "#2563eb",
-              color: "white",
-              padding: "10px 24px",
-              borderRadius: "10px",
-              border: "none",
-              cursor: "pointer",
-              fontSize: "16px",
-            }}
-          >
-            {isEditing ? <><Save size={18} /> Sačuvaj</> : <><Edit2 size={18} /> Uredi profil</>}
-          </button>
+          <Dugme 
+  tekst={isEditing ? "Sačuvaj" : "Uredi profil"} 
+  onClick={() => isEditing ? handleSave() : setIsEditing(true)} 
+/>
         </div>
 
         <div style={{

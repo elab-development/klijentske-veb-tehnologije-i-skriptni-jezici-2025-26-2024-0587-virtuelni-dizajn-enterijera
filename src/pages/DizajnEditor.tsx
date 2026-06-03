@@ -2,17 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { DndContext, useDraggable } from "@dnd-kit/core";
 import type { DragEndEvent } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
-
-interface Product {
-  id: string;
-  name: string;
-  category: string;
-  dimensions: { width: number; depth: number; height: number };
-  image_path: string;
-  price: number;
-  wood_type: string;
-  finish: string;
-}
+import type { Proizvod as Product } from "../models/ProizvodModel";
+import KarticaNamestaja from "../components/KarticaNamestaja";
 
 interface PlacedItem {
   uid: string;
@@ -197,7 +188,7 @@ export default function DizajnEditor() {
         setRoomClosed(!!closed);
         setPlacedItems(items || []);
       } catch {
-       
+        // ignore
       }
     }
   }, []);
@@ -246,19 +237,19 @@ export default function DizajnEditor() {
   };
 
   const saveLayout = () => {
-  const sviRasporedi = JSON.parse(localStorage.getItem("sacuvaniRasporedi") || "[]");
-  const noviRaspored = {
-    id: Date.now(),
-    naziv: `Raspored ${new Date().toLocaleDateString("sr-RS")}`,
-    points,
-    closed: roomClosed,
-    items: placedItems.map((i) => ({ name: i.product.name, category: i.product.category })),
+    const sviRasporedi = JSON.parse(localStorage.getItem("sacuvaniRasporedi") || "[]");
+    const noviRaspored = {
+      id: Date.now(),
+      naziv: `Raspored ${new Date().toLocaleDateString("sr-RS")}`,
+      points,
+      closed: roomClosed,
+      items: placedItems.map((i) => ({ name: i.product.name, category: i.product.category })),
+    };
+    sviRasporedi.push(noviRaspored);
+    localStorage.setItem("sacuvaniRasporedi", JSON.stringify(sviRasporedi));
+    localStorage.setItem("interiorly_layout", JSON.stringify({ points, closed: roomClosed, items: placedItems }));
+    alert("Raspored sačuvan!");
   };
-  sviRasporedi.push(noviRaspored);
-  localStorage.setItem("sacuvaniRasporedi", JSON.stringify(sviRasporedi));
-  localStorage.setItem("interiorly_layout", JSON.stringify({ points, closed: roomClosed, items: placedItems }));
-  alert("Raspored sačuvan!");
-};
 
   const downloadJSON = () => {
     const data = {
@@ -302,11 +293,11 @@ export default function DizajnEditor() {
       style={{
         display: "flex",
         height: "calc(100vh - 65px)",
-         marginTop: "90px",
+        marginTop: "90px",
         backgroundColor: "#f7f3ee",
       }}
     >
-      
+      {/* SIDEBAR */}
       <div
         style={{
           width: 250,
@@ -347,62 +338,19 @@ export default function DizajnEditor() {
           </p>
         ) : (
           products.map((product) => (
-            <div
+            <KarticaNamestaja
               key={product.id}
-              style={{
-                border: "1px solid #eee",
-                borderRadius: 10,
-                padding: 10,
-                backgroundColor: "#fafafa",
-              }}
-            >
-              <img
-                src={product.image_path}
-                alt={product.name}
-                style={{
-                  width: "100%",
-                  height: 90,
-                  objectFit: "cover",
-                  borderRadius: 6,
-                  marginBottom: 6,
-                }}
-              />
-              <p
-                style={{
-                  fontSize: 12,
-                  fontWeight: "bold",
-                  margin: "0 0 2px",
-                  color: "#2f2f2f",
-                }}
-              >
-                {product.name}
-              </p>
-              <p style={{ fontSize: 11, color: "#888", margin: "0 0 6px" }}>
-                {product.dimensions.width}×{product.dimensions.depth} cm
-              </p>
-              <button
-                onClick={() => addFurniture(product)}
-                style={{
-                  width: "100%",
-                  padding: "6px 0",
-                  backgroundColor: "#8b7355",
-                  color: "white",
-                  border: "none",
-                  borderRadius: 6,
-                  cursor: "pointer",
-                  fontSize: 12,
-                }}
-              >
-                + Dodaj u sobu
-              </button>
-            </div>
+              product={product}
+              onAdd={addFurniture}
+            />
           ))
         )}
       </div>
+      {/* KRAJ SIDEBAR-a */}
 
-      
+      {/* GLAVNI DEO */}
       <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-        
+        {/* TOOLBAR */}
         <div
           style={{
             display: "flex",
@@ -509,18 +457,18 @@ export default function DizajnEditor() {
               Resetuj
             </button>
             <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-  <label style={{ fontSize: 13, color: "#444" }}>Pod:</label>
-  <input
-    type="color"
-    value={bojaPoda}
-    onChange={(e) => setBojaPoda(e.target.value)}
-    style={{ width: 32, height: 32, border: "none", borderRadius: 6, cursor: "pointer", padding: 2 }}
-  />
-</div>
+              <label style={{ fontSize: 13, color: "#444" }}>Pod:</label>
+              <input
+                type="color"
+                value={bojaPoda}
+                onChange={(e) => setBojaPoda(e.target.value)}
+                style={{ width: 32, height: 32, border: "none", borderRadius: 6, cursor: "pointer", padding: 2 }}
+              />
+            </div>
           </div>
         </div>
 
-        
+        {/* CANVAS */}
         <div style={{ flex: 1, padding: 16, overflow: "hidden" }}>
           <DndContext onDragEnd={handleDragEnd}>
             <div
@@ -632,7 +580,7 @@ export default function DizajnEditor() {
                 }
               </svg>
 
-              
+              {/* SKALA */}
               <div style={{
                 position: "absolute",
                 bottom: 12,
