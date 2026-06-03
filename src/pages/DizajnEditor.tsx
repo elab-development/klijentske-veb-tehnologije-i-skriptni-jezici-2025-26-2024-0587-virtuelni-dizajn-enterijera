@@ -297,7 +297,7 @@ export default function DizajnEditor() {
         backgroundColor: "#f7f3ee",
       }}
     >
-      {/* Sidebar */}
+      
       <div
         style={{
           width: 250,
@@ -391,9 +391,9 @@ export default function DizajnEditor() {
         )}
       </div>
 
-      {/* Main area */}
+      
       <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-        {/* Toolbar */}
+        
         <div
           style={{
             display: "flex",
@@ -502,7 +502,7 @@ export default function DizajnEditor() {
           </div>
         </div>
 
-        {/* Canvas */}
+        
         <div style={{ flex: 1, padding: 16, overflow: "hidden" }}>
           <DndContext onDragEnd={handleDragEnd}>
             <div
@@ -614,7 +614,7 @@ export default function DizajnEditor() {
                 }
               </svg>
 
-              {/* Skala bar */}
+              
               <div style={{
                 position: "absolute",
                 bottom: 12,

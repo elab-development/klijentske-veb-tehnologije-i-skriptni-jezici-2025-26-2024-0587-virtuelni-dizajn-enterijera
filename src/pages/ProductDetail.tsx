@@ -24,7 +24,7 @@ const products: Record<string, ProductInfo> = {
     ],
     ruta: "/dizajn-editor",
   },
-  "Nameštaj": {
+  Nameštaj: {
     name: "Nameštaj",
     description:
       "Odaberi savršen izgled nameštaja koji će upotpuniti Vaš prostor!",
@@ -58,11 +58,30 @@ function ProductDetail() {
 
   if (!product) {
     return (
-      <div style={{ textAlign: "center", padding: "80px" }}>
-        <h2 style={{ fontSize: "28px", marginBottom: "20px" }}>Stranica nije pronađena</h2>
+      <div
+        style={{
+          textAlign: "center",
+          padding: "140px 60px 80px",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "28px",
+            marginBottom: "20px",
+          }}
+        >
+          Stranica nije pronađena
+        </h2>
+
         <button
           onClick={() => navigate("/ponuda")}
-          style={{ color: "#2563eb", background: "none", border: "none", cursor: "pointer", fontSize: "16px" }}
+          style={{
+            color: "#2563eb",
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            fontSize: "16px",
+          }}
         >
           Nazad na ponudu
         </button>
@@ -75,7 +94,7 @@ function ProductDetail() {
       style={{
         minHeight: "100vh",
         backgroundColor: "#f7f3ee",
-        padding: "80px 60px",
+        padding: "140px 60px 80px",
       }}
     >
       <button
@@ -105,7 +124,6 @@ function ProductDetail() {
           margin: "0 auto",
         }}
       >
-        {/* Slika */}
         <div>
           <img
             src={product.image}
@@ -120,18 +138,35 @@ function ProductDetail() {
           />
         </div>
 
-        {/* Detalji */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "24px",
+          }}
+        >
           <div>
-            <h1 style={{ fontSize: "40px", color: "#111827", marginBottom: "12px" }}>
+            <h1
+              style={{
+                fontSize: "40px",
+                color: "#111827",
+                marginBottom: "12px",
+              }}
+            >
               {product.name}
             </h1>
-            <p style={{ fontSize: "18px", color: "#666", lineHeight: "1.6" }}>
+
+            <p
+              style={{
+                fontSize: "18px",
+                color: "#666",
+                lineHeight: "1.6",
+              }}
+            >
               {product.description}
             </p>
           </div>
 
-          {/* Features */}
           <div
             style={{
               backgroundColor: "white",
@@ -140,20 +175,56 @@ function ProductDetail() {
               boxShadow: "0 2px 10px rgba(0,0,0,0.06)",
             }}
           >
-            <h3 style={{ fontSize: "20px", color: "#111827", marginBottom: "16px" }}>
+            <h3
+              style={{
+                fontSize: "20px",
+                color: "#111827",
+                marginBottom: "16px",
+              }}
+            >
               Ponuda
             </h3>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
+
+            <ul
+              style={{
+                listStyle: "none",
+                padding: 0,
+                margin: 0,
+                display: "flex",
+                flexDirection: "column",
+                gap: "12px",
+              }}
+            >
               {product.features.map((feature, index) => (
-                <li key={index} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
-                  <Check size={20} color="#16a34a" style={{ marginTop: "2px", flexShrink: 0 }} />
-                  <span style={{ color: "#374151", fontSize: "15px" }}>{feature}</span>
+                <li
+                  key={index}
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "10px",
+                  }}
+                >
+                  <Check
+                    size={20}
+                    color="#16a34a"
+                    style={{
+                      marginTop: "2px",
+                      flexShrink: 0,
+                    }}
+                  />
+                  <span
+                    style={{
+                      color: "#374151",
+                      fontSize: "15px",
+                    }}
+                  >
+                    {feature}
+                  </span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Dugme */}
           <button
             onClick={() => navigate(product.ruta!)}
             style={{

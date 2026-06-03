@@ -10,12 +10,12 @@ function Home() {
           "url('https://images.unsplash.com/photo-1749464251742-107093fc5650?q=80&w=1632&auto=format&fit=crop')",
       }}
     >
-      {/* Overlay */}
+      
       <div className="absolute inset-0 bg-white/40"></div>
 
-      {/* Content */}
+      
       <div className="relative z-10 flex flex-col items-center">
-        {/* Hero */}
+        
         <section className="text-center px-4 w-full" style={{ paddingTop: "180px", paddingBottom: "80px" }}>
           <h1 className="text-7xl md:text-8xl font-serif text-slate-900 mb-10">
             Interiorly
@@ -37,11 +37,11 @@ function Home() {
           </Link>
         </section>
 
-        {/* Kartice */}
+        
         <section className="w-full max-w-5xl mx-auto px-12 pb-20">
           <div className="grid md:grid-cols-3 gap-6">
 
-            {/* Boje */}
+            
             <div className="bg-white/80 rounded-3xl shadow-xl p-8 min-h-[220px]">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center shrink-0">
@@ -56,7 +56,7 @@ function Home() {
               </p>
             </div>
 
-            {/* Raspored */}
+            
             <div className="bg-white/80 rounded-3xl shadow-xl p-8 min-h-[220px]">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center shrink-0">
@@ -71,7 +71,7 @@ function Home() {
               </p>
             </div>
 
-            {/* Katalog */}
+            
             <div className="bg-white/80 rounded-3xl shadow-xl p-8 min-h-[220px]">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-14 h-14 rounded-2xl bg-purple-100 flex items-center justify-center shrink-0">
