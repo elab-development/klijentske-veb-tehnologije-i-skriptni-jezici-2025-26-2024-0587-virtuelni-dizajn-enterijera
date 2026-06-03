@@ -11,6 +11,7 @@ import Galerija from "./pages/Galerija";
 import DizajnEditor from "./pages/DizajnEditor";
 import Boje from "./pages/Boje";
 import Podaci from "./pages/Podaci";
+import ProductDetail from "./pages/ProductDetail";
 
 function AppContent() {
   const location = useLocation();
@@ -29,6 +30,7 @@ function AppContent() {
 
         <Route path="/home" element={<Home />} />
         <Route path="/ponuda" element={<Ponuda />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/boje" element={<Boje />} />
         <Route path="/galerija" element={<Galerija />} />
         <Route path="/dizajn-editor" element={<DizajnEditor />} />
