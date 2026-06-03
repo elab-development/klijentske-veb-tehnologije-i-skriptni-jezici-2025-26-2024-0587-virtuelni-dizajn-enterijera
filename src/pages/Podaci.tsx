@@ -7,6 +7,9 @@ function Podaci() {
 const [omiljeneSlike, setOmiljeneSlike] = useState<{ id: number; naziv: string; slika: string }[]>(
   () => JSON.parse(localStorage.getItem("omiljeneSlike") || "[]")
 );
+  
+
+
 
   const getUserData = () => JSON.parse(localStorage.getItem("user") || "{}");
 

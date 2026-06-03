@@ -159,6 +159,7 @@ export default function DizajnEditor() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [loading, setLoading] = useState(false);
   const [hoverClose, setHoverClose] = useState(false);
+  const [bojaPoda, setBojaPoda] = useState("#e8e0d5");
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
@@ -196,7 +197,7 @@ export default function DizajnEditor() {
         setRoomClosed(!!closed);
         setPlacedItems(items || []);
       } catch {
-        // ignore invalid stored data
+       
       }
     }
   }, []);
@@ -245,12 +246,19 @@ export default function DizajnEditor() {
   };
 
   const saveLayout = () => {
-    localStorage.setItem(
-      "interiorly_layout",
-      JSON.stringify({ points, closed: roomClosed, items: placedItems })
-    );
-    alert("Raspored sačuvan!");
+  const sviRasporedi = JSON.parse(localStorage.getItem("sacuvaniRasporedi") || "[]");
+  const noviRaspored = {
+    id: Date.now(),
+    naziv: `Raspored ${new Date().toLocaleDateString("sr-RS")}`,
+    points,
+    closed: roomClosed,
+    items: placedItems.map((i) => ({ name: i.product.name, category: i.product.category })),
   };
+  sviRasporedi.push(noviRaspored);
+  localStorage.setItem("sacuvaniRasporedi", JSON.stringify(sviRasporedi));
+  localStorage.setItem("interiorly_layout", JSON.stringify({ points, closed: roomClosed, items: placedItems }));
+  alert("Raspored sačuvan!");
+};
 
   const downloadJSON = () => {
     const data = {
@@ -294,6 +302,7 @@ export default function DizajnEditor() {
       style={{
         display: "flex",
         height: "calc(100vh - 65px)",
+         marginTop: "90px",
         backgroundColor: "#f7f3ee",
       }}
     >
@@ -499,6 +508,15 @@ export default function DizajnEditor() {
             >
               Resetuj
             </button>
+            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+  <label style={{ fontSize: 13, color: "#444" }}>Pod:</label>
+  <input
+    type="color"
+    value={bojaPoda}
+    onChange={(e) => setBojaPoda(e.target.value)}
+    style={{ width: 32, height: 32, border: "none", borderRadius: 6, cursor: "pointer", padding: 2 }}
+  />
+</div>
           </div>
         </div>
 
@@ -510,7 +528,7 @@ export default function DizajnEditor() {
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                backgroundColor: "#e8e0d5",
+                backgroundColor: bojaPoda,
                 borderRadius: 12,
                 overflow: "hidden",
               }}
