@@ -4,7 +4,17 @@ import { Eye, EyeOff } from "lucide-react";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const handleLogin = () => {
+    if (!email || !password) return;
+    const user = { email, name: name || email.split("@")[0] };
+    localStorage.setItem("user", JSON.stringify(user));
+    navigate("/home");
+  };
 
   return (
     <div
@@ -26,18 +36,30 @@ function Login() {
           borderRadius: "20px",
         }}
       >
-        <h1 style={{ textAlign: "center", marginBottom: "10px" }}>
-          Interiorly
-        </h1>
+        <h1 style={{ textAlign: "center", marginBottom: "10px" }}>Interiorly</h1>
+        <p style={{ textAlign: "center", marginBottom: "30px" }}>Prijavi se</p>
 
-        <p style={{ textAlign: "center", marginBottom: "30px" }}>
-          Prijavi se
-        </p>
+        <label>Ime i Prezime</label>
+        <input
+          type="text"
+          placeholder="Vaše ime i prezime"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          style={{
+            width: "100%",
+            padding: "12px",
+            marginTop: "8px",
+            marginBottom: "20px",
+            boxSizing: "border-box",
+          }}
+        />
 
         <label>Email</label>
         <input
           type="email"
           placeholder="you@example.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           style={{
             width: "100%",
             padding: "12px",
@@ -52,6 +74,8 @@ function Login() {
           <input
             type={showPassword ? "text" : "password"}
             placeholder="********"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             style={{
               width: "100%",
               padding: "12px",
@@ -80,7 +104,7 @@ function Login() {
         </div>
 
         <button
-          onClick={() => navigate("/home")}
+          onClick={handleLogin}
           style={{
             width: "100%",
             padding: "14px",
