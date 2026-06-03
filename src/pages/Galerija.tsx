@@ -87,7 +87,10 @@ const kategorije = [
 
 export default function Galerija() {
   const [aktivnaKategorija, setAktivnaKategorija] = useState<string | null>(null);
-  const [omiljene, setOmiljene] = useState<Set<number>>(new Set());
+  const [omiljene, setOmiljene] = useState<Set<number>>(() => {
+  const sacuvane = JSON.parse(localStorage.getItem("omiljeneIds") || "[]");
+  return new Set(sacuvane);
+});
   const [odabranaSlika, setOdabranaSlika] = useState<{ slika: string; naziv: string } | null>(null);
 
   const trenutneStavke = aktivnaKategorija
@@ -95,14 +98,18 @@ export default function Galerija() {
     : null;
 
   const toggleOmiljene = (id: number) => {
-    const noveOmiljene = new Set(omiljene);
-    if (noveOmiljene.has(id)) {
-      noveOmiljene.delete(id);
-    } else {
-      noveOmiljene.add(id);
-    }
-    setOmiljene(noveOmiljene);
-  };
+  const noveOmiljene = new Set(omiljene);
+  if (noveOmiljene.has(id)) {
+    noveOmiljene.delete(id);
+  } else {
+    noveOmiljene.add(id);
+  }
+  setOmiljene(noveOmiljene);
+  localStorage.setItem("omiljeneIds", JSON.stringify([...noveOmiljene]));
+  const sveSlike = Object.values(stavkeGalerije).flat();
+  const omiljeneSlike = sveSlike.filter((s) => noveOmiljene.has(s.id));
+  localStorage.setItem("omiljeneSlike", JSON.stringify(omiljeneSlike));
+};
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#eef0f5", padding: "40px 20px", paddingTop: "100px" }}>
@@ -157,15 +164,18 @@ export default function Galerija() {
             </button>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px", maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", backgroundColor: "#f3f4f6", padding: "16px", borderRadius: "12px" }}>
             {trenutneStavke?.map((stavka) => (
               <div
-                key={stavka.id}
-                onClick={() => setOdabranaSlika({ slika: stavka.slika, naziv: stavka.naziv })}
-                style={{ backgroundColor: "white", borderRadius: "16px", overflow: "hidden", cursor: "pointer", position: "relative" }}
-              >
-                <img src={stavka.slika} style={{ width: "100%", height: "220px", objectFit: "cover" }} />
-
+  key={stavka.id}
+  onClick={() => setOdabranaSlika({ slika: stavka.slika, naziv: stavka.naziv })}
+  className="slika-kartica"
+  style={{ cursor: "pointer", position: "relative", overflow: "hidden"}}
+>
+  <img src={stavka.slika} className="slika-kartica-img" style={{ height: "220px", borderRadius: "16px 16px 0 0" }} />
+  <div style={{ padding: "10px 12px" }}>
+  <p style={{ fontSize: "14px", color: "#374151", margin: 0 }}>{stavka.naziv}</p>
+</div>
                 <button
   onClick={(e) => {
     e.stopPropagation();

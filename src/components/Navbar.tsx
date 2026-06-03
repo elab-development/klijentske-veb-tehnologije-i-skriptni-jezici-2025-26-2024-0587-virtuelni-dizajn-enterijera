@@ -84,7 +84,7 @@ function Navbar() {
             fontWeight: "500",
           }}
         >
-          Podaci
+          Korisnički profil
         </Link>
 
         <button

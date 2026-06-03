@@ -3,6 +3,10 @@ import { User, Mail, Edit2, Save } from "lucide-react";
 
 function Podaci() {
   const [isEditing, setIsEditing] = useState(false);
+  const [prikaziSacuvane, setPrikaziSacuvane] = useState(false);
+const [omiljeneSlike, setOmiljeneSlike] = useState<{ id: number; naziv: string; slika: string }[]>(
+  () => JSON.parse(localStorage.getItem("omiljeneSlike") || "[]")
+);
 
   const getUserData = () => JSON.parse(localStorage.getItem("user") || "{}");
 
@@ -18,6 +22,7 @@ function Podaci() {
         name: userData.name || "",
         email: userData.email || "",
       });
+      setOmiljeneSlike(JSON.parse(localStorage.getItem("omiljeneSlike") || "[]"));
     };
     window.addEventListener("storage", sync);
     sync();
@@ -108,11 +113,53 @@ function Podaci() {
                 <p style={{ fontSize: "16px", color: "#111827" }}>{profile.email || "—"}</p>
               )}
             </div>
+            </div>
+            <div style={{ marginTop: "30px" }}>
+  <button
+    onClick={() => setPrikaziSacuvane(!prikaziSacuvane)}
+    style={{
+      width: "fit-content",
+      padding: "16px",
+      backgroundColor: "#2563eb",
+      color: "white",
+      border: "none",
+      borderRadius: "14px",
+      fontSize: "15px",
+      cursor: "pointer",
+      display: "block",
+      marginLeft: "auto",
+    }}
+  >
+    {prikaziSacuvane ? "▲ Sakrij sačuvane ideje" : "▼ Sačuvane ideje"}
+  </button>
+
+  {prikaziSacuvane && (
+    <div style={{ marginTop: "30px",}}>
+      {omiljeneSlike.length === 0 ? (
+        <p style={{ color: "#6b7280", textAlign: "center", fontSize: "16px" }}>
+          Nema sačuvanih ideja.
+        </p>
+      ) : (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px" }}>
+          {omiljeneSlike.map((slika) => (
+            <div key={slika.id} style={{ borderRadius: "12px", overflow: "hidden", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}>
+              <img src={slika.slika} alt={slika.naziv} style={{ width: "100%", height: "180px", objectFit: "cover" }} />
+              <div style={{ padding: "10px", backgroundColor: "white" }}>
+                <p style={{ fontSize: "14px", color: "#374151", margin: 0 }}>{slika.naziv}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )}
+</div>
           </div>
 
         </div>
       </div>
-    </div>
+    
+    
   );
 }
 

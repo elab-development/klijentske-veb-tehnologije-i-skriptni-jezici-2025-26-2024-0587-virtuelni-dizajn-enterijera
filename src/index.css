@@ -24,3 +24,16 @@ h2,
 h3 {
   font-family: "Playfair Display", serif;
 }
+.slika-kartica {
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.slika-kartica-img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  isolation: isolate;
+}
