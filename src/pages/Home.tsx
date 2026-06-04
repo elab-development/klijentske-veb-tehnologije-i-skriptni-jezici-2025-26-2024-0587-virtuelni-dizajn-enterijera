@@ -23,7 +23,7 @@ function Home() {
 
           <p
             className="text-xl md:text-2xl mx-auto mb-14 font-medium text-center w-full"
-            style={{ color: "#2d2d2d", textShadow: "0 1px 3px rgba(255,255,255,0.8)" }}
+style={{ color: "#2d2d2d", textShadow: "0 1px 3px rgba(255,255,255,0.8)" }}
           >
             Iskoristite našu ponudu da na najlakši način uredite svoj prostor iz snova!
           </p>
@@ -38,56 +38,47 @@ function Home() {
         </section>
 
         
-        <section className="w-full max-w-5xl mx-auto px-12 pb-20">
-          <div className="grid md:grid-cols-3 gap-6">
+       <section className="w-full max-w-5xl mx-auto px-12 pb-20">
+  <div className="grid md:grid-cols-3 gap-6">
 
-            
-            <div className="bg-white/80 rounded-3xl shadow-xl p-8 min-h-[220px]">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center shrink-0">
-                  <Palette size={26} className="text-blue-600" />
-                </div>
-                <h3 className="text-2xl font-serif text-slate-900">
-                  Boje
-                </h3>
-              </div>
-              <p className="text-gray-600 text-base leading-relaxed text-center px-2">
-                Isprobajte različite boje i odaberite onu koja bi se najbolje uklapala!
-              </p>
-            </div>
+    <div className="bg-white/80 rounded-3xl shadow-xl" style={{ padding: "20px 24px" }}>
+      <div className="flex items-center gap-4 mb-3">
+        <div className="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center shrink-0">
+          <Palette size={24} className="text-blue-600" />
+        </div>
+        <h3 className="text-2xl font-serif text-slate-900">Boje</h3>
+      </div>
+      <p className="text-gray-600 text-base leading-relaxed" style={{ padding: "0 8px 8px 8px" }}>
+        Isprobajte različite boje i odaberite onu koja bi se najbolje uklapala!
+      </p>
+    </div>
 
-            
-            <div className="bg-white/80 rounded-3xl shadow-xl p-8 min-h-[220px]">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center shrink-0">
-                  <LayoutGrid size={26} className="text-green-600" />
-                </div>
-                <h3 className="text-2xl font-serif text-slate-900">
-                  Raspored nameštaja
-                </h3>
-              </div>
-              <p className="text-gray-600 text-base leading-relaxed text-center px-2">
-                Pronađite najbolji mogući raspored za svaki deo nameštaja koji će ulepšavati vaš prostor!
-              </p>
-            </div>
+    <div className="bg-white/80 rounded-3xl shadow-xl" style={{ padding: "20px 24px" }}>
+      <div className="flex items-center gap-4 mb-3">
+        <div className="w-12 h-12 rounded-2xl bg-green-100 flex items-center justify-center shrink-0">
+          <LayoutGrid size={24} className="text-green-600" />
+        </div>
+        <h3 className="text-2xl font-serif text-slate-900">Raspored nameštaja</h3>
+      </div>
+      <p className="text-gray-600 text-base leading-relaxed" style={{ padding: "0 8px 8px 8px" }}>
+        Pronađite najbolji mogući raspored za svaki deo nameštaja koji će ulepšavati vaš prostor!
+      </p>
+    </div>
 
-            
-            <div className="bg-white/80 rounded-3xl shadow-xl p-8 min-h-[220px]">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 rounded-2xl bg-purple-100 flex items-center justify-center shrink-0">
-                  <BookOpen size={26} className="text-purple-600" />
-                </div>
-                <h3 className="text-2xl font-serif text-slate-900">
-                  Katalog
-                </h3>
-              </div>
-              <p className="text-gray-600 text-base leading-relaxed text-center px-2">
-                Pogledajte našu ponudu boja i nameštaja!
-              </p>
-            </div>
+    <div className="bg-white/80 rounded-3xl shadow-xl" style={{ padding: "20px 24px" }}>
+      <div className="flex items-center gap-4 mb-3">
+        <div className="w-12 h-12 rounded-2xl bg-purple-100 flex items-center justify-center shrink-0">
+          <BookOpen size={24} className="text-purple-600" />
+        </div>
+        <h3 className="text-2xl font-serif text-slate-900">Katalog</h3>
+      </div>
+      <p className="text-gray-600 text-base leading-relaxed" style={{ padding: "0 8px 8px 8px" }}>
+        Pogledajte našu ponudu boja i nameštaja!
+      </p>
+    </div>
 
-          </div>
-        </section>
+  </div>
+</section>
       </div>
     </div>
   );
