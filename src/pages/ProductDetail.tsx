@@ -262,7 +262,7 @@ function ProductDetail() {
             Katalog nameštaja
           </h2>
 
-          {/* Kategorije tabs */}
+          
           <div style={{ display: "flex", gap: "10px", marginBottom: "30px", flexWrap: "wrap" }}>
             {KATEGORIJE.map((kat) => (
               <button
@@ -301,7 +301,7 @@ function ProductDetail() {
             </button>
           </div>
 
-          {/* Prikaz nameštaja */}
+          
           {aktivnaKategorija === "api" && loadingApi ? (
             <p style={{ textAlign: "center", color: "#666" }}>Učitavanje...</p>
           ) : (

@@ -188,7 +188,7 @@ export default function DizajnEditor() {
         setRoomClosed(!!closed);
         setPlacedItems(items || []);
       } catch {
-        // ignore
+       
       }
     }
   }, []);
@@ -297,7 +297,7 @@ export default function DizajnEditor() {
         backgroundColor: "#f7f3ee",
       }}
     >
-      {/* SIDEBAR */}
+      
       <div
         style={{
           width: 250,
@@ -346,11 +346,10 @@ export default function DizajnEditor() {
           ))
         )}
       </div>
-      {/* KRAJ SIDEBAR-a */}
+      
 
-      {/* GLAVNI DEO */}
+      
       <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-        {/* TOOLBAR */}
         <div
           style={{
             display: "flex",
@@ -468,7 +467,7 @@ export default function DizajnEditor() {
           </div>
         </div>
 
-        {/* CANVAS */}
+        
         <div style={{ flex: 1, padding: 16, overflow: "hidden" }}>
           <DndContext onDragEnd={handleDragEnd}>
             <div
@@ -580,7 +579,7 @@ export default function DizajnEditor() {
                 }
               </svg>
 
-              {/* SKALA */}
+              
               <div style={{
                 position: "absolute",
                 bottom: 12,
