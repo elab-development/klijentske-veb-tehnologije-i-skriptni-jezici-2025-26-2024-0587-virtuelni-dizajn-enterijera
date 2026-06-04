@@ -20,8 +20,9 @@ function Login() {
   return (
     <div
       style={{
-        height: "100vh",
-        backgroundImage: `url("https://images.unsplash.com/photo-1749464251742-107093fc5650?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
+        minHeight: "100vh",
+        backgroundImage:
+          'url("https://images.unsplash.com/photo-1749464251742-107093fc5650?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
         backgroundSize: "cover",
         backgroundPosition: "center",
         display: "flex",
@@ -31,13 +32,14 @@ function Login() {
     >
       <div
         style={{
-          width: "450px",
-          backgroundColor: "white",
+          width: "500px",
+          backgroundColor: "rgba(255,255,255,0.95)",
           padding: "40px",
           borderRadius: "20px",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
         }}
       >
-        <h1 style={{ textAlign: "center", marginBottom: "10px" }}>Interiorly</h1>
+        <h1 style={{ textAlign: "center", marginBottom: "10px", fontSize:"50px" }}>Interiorly</h1>
         <p style={{ textAlign: "center", marginBottom: "30px" }}>Prijavi se</p>
 
         <label>Ime i Prezime</label>
@@ -47,11 +49,14 @@ function Login() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           style={{
-            width: "100%",
-            padding: "12px",
-            marginTop: "8px",
-            marginBottom: "20px",
-            boxSizing: "border-box",
+             width: "100%",
+              padding: "14px",
+              marginTop: "8px",
+              marginBottom: "20px",
+              border: "1px solid #d1d5db",
+              borderRadius: "8px",
+              boxSizing: "border-box",
+           
           }}
         />
 
@@ -62,11 +67,13 @@ function Login() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           style={{
-            width: "100%",
-            padding: "12px",
-            marginTop: "8px",
-            marginBottom: "20px",
-            boxSizing: "border-box",
+             width: "100%",
+              padding: "14px",
+              marginTop: "8px",
+              marginBottom: "20px",
+              border: "1px solid #d1d5db",
+              borderRadius: "8px",
+              boxSizing: "border-box",
           }}
         />
 
@@ -78,9 +85,12 @@ function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             style={{
-              width: "100%",
-              padding: "12px",
-              paddingRight: "48px",
+               width: "100%",
+              padding: "14px",
+              marginTop: "8px",
+              marginBottom: "20px",
+              border: "1px solid #d1d5db",
+              borderRadius: "8px",
               boxSizing: "border-box",
             }}
           />
