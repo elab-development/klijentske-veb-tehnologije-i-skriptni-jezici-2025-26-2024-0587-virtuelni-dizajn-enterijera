@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { User, Mail, Edit2, Save } from "lucide-react";
+import { User, Mail, } from "lucide-react";
 import { Korisnik } from "../models/KorisnikModel";
 import Dugme from "../components/Dugme";
 
