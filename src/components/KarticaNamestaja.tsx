@@ -4,7 +4,7 @@ interface KarticaNamestajaProps {
   product: Proizvod;
   onAdd: (product: Proizvod) => void;
 }
-
+// komentar sa odbrane
 export default function KarticaNamestaja({ product, onAdd }: KarticaNamestajaProps) {
   return (
     <div
