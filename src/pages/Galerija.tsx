@@ -85,17 +85,36 @@ const kategorije = [
   { id: "trpezarija", oznaka: "Trpezarija", slika: "https://images.unsplash.com/photo-1704383014609-747c5afc2bc1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" },
 ];
 
+const STAVKI_PO_STRANI = 5;
+
 export default function Galerija() {
   const [aktivnaKategorija, setAktivnaKategorija] = useState<string | null>(null);
+  const [trenutnaStrana, setTrenutnaStrana] = useState(1);
   const [omiljene, setOmiljene] = useState<Set<number>>(() => {
+    try {
   const sacuvane = JSON.parse(localStorage.getItem("omiljeneIds") || "[]");
   return new Set(sacuvane);
+    } catch {
+      return new Set();
+    }
 });
   const [odabranaSlika, setOdabranaSlika] = useState<{ slika: string; naziv: string } | null>(null);
 
   const trenutneStavke = aktivnaKategorija
     ? stavkeGalerije[aktivnaKategorija as keyof typeof stavkeGalerije]
     : null;
+
+  const ukupnoStrana = trenutneStavke ? Math.ceil(trenutneStavke.length / STAVKI_PO_STRANI) : 0;
+  const stavkeNaStrani = trenutneStavke ? trenutneStavke.slice((trenutnaStrana -1) * STAVKI_PO_STRANI, trenutnaStrana * STAVKI_PO_STRANI) : [];
+  const handleKategorija = (id: string) => {
+    setAktivnaKategorija(id);
+    setTrenutnaStrana(1);
+  }
+  const handleNazad = () => {
+    setAktivnaKategorija(null);
+    setTrenutnaStrana(1);
+  }
+
 
   const toggleOmiljene = (id: number) => {
   const noveOmiljene = new Set(omiljene);
@@ -165,7 +184,7 @@ export default function Galerija() {
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", backgroundColor: "#f3f4f6", padding: "16px", borderRadius: "12px" }}>
-            {trenutneStavke?.map((stavka) => (
+            {stavkeNaStrani?.map((stavka) => (
               <div
   key={stavka.id}
   onClick={() => setOdabranaSlika({ slika: stavka.slika, naziv: stavka.naziv })}
@@ -211,6 +230,35 @@ export default function Galerija() {
               </div>
             ))}
           </div>
+
+        <div style = {{ display: "flex", justifyContent: "center", alignItems: "center", gap: "8px", marginTop: "30px"}}> 
+          <button
+            onClick={() => setTrenutnaStrana((s) => s-1)}
+            disabled={ trenutnaStrana === 1}
+            style = {{ padding: "8px 16px", borderRadius:"8px", border: "1px solid #d1d5db", backgroundColor: trenutnaStrana === 1 ? "#e5e7eb" : "white", cursor: trenutnaStrana === 1 ? "not-allowed" : "pointer", color: "#374151" }}
+          >
+            ←
+          </button>
+          {Array.from({ length: ukupnoStrana}, (_, i) => i+1).map((br) => (
+            <button 
+            key={br}
+            onClick={() => setTrenutnaStrana(br)}
+            style = {{ padding: "8px 14px", borderRadius: "8px", border: "1px solid #d1d5db", backgroundColor: trenutnaStrana === br ? "#2563eb" : "white", color: trenutnaStrana === br ? "white" : " #374151", cursor: "pointer", fontWeight: trenutnaStrana === br ? "bold" : "normal" }}
+            >
+              {br}
+            </button>
+          ))}
+          <button 
+          onClick ={() => setTrenutnaStrana((s) => s+1)}
+          disabled = { trenutnaStrana === ukupnoStrana}
+          style ={{ padding: "8px 16px", borderRadius: "8px", border: "1px solid #d1d5db", backgroundColor: trenutnaStrana === ukupnoStrana ? "#e5e7eb" : "white", cursor: trenutnaStrana === ukupnoStrana ? "not-allowed" : "pointer", color: " #374151" }}
+          >
+             →
+          </button>
+          </div>
+          <p style ={{ textAlign: "center", marginTop: "12px", color: " #6b7280", fontSize: " 14px"}}>
+            Strana { trenutnaStrana} od {ukupnoStrana}
+          </p>
         </>
       )}
 
