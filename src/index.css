@@ -2,21 +2,24 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-html,
-body,
-#root {
-  width: 100%;
-  min-height: 100vh;
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255,255,255, 0.87);
+  background-color: #242424;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
 }
 
 h1,
@@ -36,4 +39,35 @@ h3 {
   object-fit: cover;
   display: block;
   isolation: isolate;
+}
+
+@media (max-width: 768px){
+  .hamburger-btn {
+    display: block !important;
+  }
+  .nav-links {
+    display: none !important;
+  }
+  nav {
+    padding: 14px 20px !important
+  }
+}
+.product-detail-grid {
+  grid-template-columns: 1fr !important;
+}
+@media (min-width: 768px){
+  .product-detail-grid{
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+.dizajn-mobile-msg{
+  display: none;
+}
+@media (max-width: 768px){
+  .dizajn-sidebar{
+    display: none !important;
+  }
+  .dizajn-mobile-msg{
+    display: flex !important;
+  }
 }

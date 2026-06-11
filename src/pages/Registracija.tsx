@@ -35,9 +35,9 @@ export function Register() {
     >
       <div
         style={{
-          width: "500px",
+          width: "min(500px, 90vw)",
           backgroundColor: "rgba(255,255,255,0.95)",
-          padding: "40px",
+          padding: "clamp(20px, 5vw, 40px)",
           borderRadius: "20px",
           boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
         }}

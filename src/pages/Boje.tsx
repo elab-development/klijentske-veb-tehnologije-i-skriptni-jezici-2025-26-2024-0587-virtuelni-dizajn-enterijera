@@ -29,7 +29,7 @@ function Boje() {
   const filPalete = aktivniTon === "sve" ? palete: palete.filter((p) => p.ton === aktivniTon);
 
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "#f7f3ee", paddingTop: "120px", paddingBottom: "60px", paddingLeft: "40px", paddingRight: "40px" }}>
+    <div style={{ minHeight: "100vh", backgroundColor: "#f7f3ee", paddingTop: "120px", paddingBottom: "60px", paddingLeft: "clamp(16px,5vw,40px", paddingRight: "clamp(16px,5vw,40px" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         <button
           onClick={() => navigate("/products/Boje")}
@@ -38,7 +38,7 @@ function Boje() {
           ← Nazad na ponudu
         </button>
 
-        <h1 style={{ textAlign: "center", fontSize: "46px", marginBottom: "16px", color: "#2f2f2f" }}>
+        <h1 style={{ textAlign: "center", fontSize: "clamp(28px, 6vw, 46px)", marginBottom: "16px", color: "#2f2f2f" }}>
           Paleta boja
         </h1>
 

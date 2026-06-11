@@ -618,4 +618,4 @@ export default function DizajnEditor() {
       </div>
     </div>
   );
-}0
+}

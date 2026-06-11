@@ -45,10 +45,10 @@ const [omiljeneSlike, setOmiljeneSlike] = useState<{ id: number; naziv: string; 
   setIsEditing(false);
 };
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "#f3f4f6", paddingTop: "100px", paddingLeft: "40px", paddingRight: "40px", paddingBottom: "40px" }}>
+    <div style={{ minHeight: "100vh", backgroundColor: "#f3f4f6", paddingTop: "100px", paddingLeft: "clamp(16px, 5vw, 40px)", paddingRight: "clamp(16px, 5vw, 40px)", paddingBottom: "40px" }}>
       <div style={{ maxWidth: "800px", margin: "0 auto" }}>
 
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "30px" }}>
+        <div style={{ display: "flex",flexWrap: "wrap", gap: "12px", justifyContent: "space-between", alignItems: "center", marginBottom: "30px" }}>
           <h1 style={{ fontSize: "36px", color: "#111827" }}>Korisnički profil</h1>
           <Dugme 
   tekst={isEditing ? "Sačuvaj" : "Uredi profil"} 
@@ -136,7 +136,7 @@ const [omiljeneSlike, setOmiljeneSlike] = useState<{ id: number; naziv: string; 
           Nema sačuvanih ideja.
         </p>
       ) : (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px" }}>
           {omiljeneSlike.map((slika) => (
             <div key={slika.id} style={{ borderRadius: "12px", overflow: "hidden", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}>
               <img src={slika.slika} alt={slika.naziv} style={{ width: "100%", height: "180px", objectFit: "cover" }} />

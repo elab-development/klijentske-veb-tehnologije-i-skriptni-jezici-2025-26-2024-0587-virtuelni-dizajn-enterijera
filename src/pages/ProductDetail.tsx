@@ -160,7 +160,7 @@ function ProductDetail() {
   }
 
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "#f7f3ee", padding: "140px 60px 80px" }}>
+    <div style={{ minHeight: "100vh", backgroundColor: "#f7f3ee", padding: "140px clamp(16px, 5vw, 60px) 80px" }}>
       <button
         onClick={() => navigate("/ponuda")}
         style={{
@@ -179,11 +179,10 @@ function ProductDetail() {
         Nazad na ponudu
       </button>
 
-      <div
+      <div className="product-detail-grid"
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "60px",
+          gap: "40px",
           maxWidth: "1100px",
           margin: "0 auto",
         }}
@@ -204,7 +203,7 @@ function ProductDetail() {
 
         <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
           <div>
-            <h1 style={{ fontSize: "40px", color: "#111827", marginBottom: "12px" }}>{product.name}</h1>
+            <h1 style={{ fontSize: "clamp(26px, 4vw, 40px", color: "#111827", marginBottom: "12px" }}>{product.name}</h1>
             <p style={{ fontSize: "18px", color: "#666", lineHeight: "1.6" }}>{product.description}</p>
           </div>
 

@@ -17,7 +17,7 @@ function Home() {
       <div className="relative z-10 flex flex-col items-center">
         
         <section className="text-center px-4 w-full" style={{ paddingTop: "180px", paddingBottom: "80px" }}>
-          <h1 className="text-7xl md:text-8xl font-serif text-slate-900 mb-10">
+          <h1 className="text-5xl md:text-7xl lg:text-8x1 font-serif text-slate-900 mb-10">
             Interiorly
           </h1>
 
@@ -38,8 +38,8 @@ style={{ color: "#2d2d2d", textShadow: "0 1px 3px rgba(255,255,255,0.8)" }}
         </section>
 
         
-       <section className="w-full max-w-5xl mx-auto px-12 pb-20">
-  <div className="grid md:grid-cols-3 gap-6">
+       <section className="w-full max-w-5xl mx-auto px-4 md:px-12 pb-20">
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
     <div className="bg-white/80 rounded-3xl shadow-xl" style={{ padding: "20px 24px" }}>
       <div className="flex items-center gap-4 mb-3">

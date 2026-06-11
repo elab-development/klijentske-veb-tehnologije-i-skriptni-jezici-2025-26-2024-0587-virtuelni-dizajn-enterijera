@@ -133,7 +133,7 @@ export default function Galerija() {
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#eef0f5", padding: "40px 20px", paddingTop: "100px" }}>
       <div style={{ textAlign: "center", marginBottom: "40px" }}>
-        <h1 style={{ fontSize: "42px", color: "#1a1a2e", marginBottom: "10px", fontWeight: 400 }}>
+        <h1 style={{ fontSize: "clamp(26px, 5vw, 42px", color: "#1a1a2e", marginBottom: "10px", fontWeight: 400 }}>
           Galerija inspiracija
         </h1>
         <p style={{ fontSize: "18px", color: "#666" }}>
@@ -144,7 +144,7 @@ export default function Galerija() {
       {!aktivnaKategorija ? (
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
           gap: "20px",
           maxWidth: "1100px",
           margin: "0 auto",
@@ -183,7 +183,7 @@ export default function Galerija() {
             </button>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", backgroundColor: "#f3f4f6", padding: "16px", borderRadius: "12px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "16px", backgroundColor: "#f3f4f6", padding: "16px", borderRadius: "12px" }}>
             {stavkeNaStrani?.map((stavka) => (
               <div
   key={stavka.id}

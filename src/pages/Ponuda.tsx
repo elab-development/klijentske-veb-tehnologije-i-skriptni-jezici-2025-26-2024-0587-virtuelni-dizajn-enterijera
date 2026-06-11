@@ -32,7 +32,7 @@ function Ponuda() {
       style={{
         minHeight: "100vh",
         backgroundColor: "#f7f3ee",
-        padding: "140px 60px 80px",
+        padding: "140px clamp(16px, 5vw, 60px) 80px",
       }}
     >
       <div
@@ -43,7 +43,7 @@ function Ponuda() {
       >
         <h1
           style={{
-            fontSize: "48px",
+            fontSize: "clamp(28px, 5vw, 48px)",
             color: "#111827",
             marginBottom: "15px",
           }}
