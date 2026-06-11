@@ -39,7 +39,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   kitchen: "Kuhinja",
 };
 
-const MOCK_PRODUCTS: Product[] = [
+const MOCK_PRODUCTS: ProizvodModel[] = [
   new ProizvodModel( { id: "m1", name: "Sofa Milano", category: "sofa", dimensions: { width: 220, depth: 90, height: 85 }, image_path: "https://placehold.co/200x140/c9b79c/5a4a3a?text=Sofa", wood_type: "oak", finish: "natural" }),
    new ProizvodModel({ id: "m2", name: "Fotelja Lux", category: "chair", dimensions: { width: 80, depth: 80, height: 90 }, image_path: "https://placehold.co/200x140/d9c9b8/5a4a3a?text=Fotelja",  wood_type: "walnut", finish: "dark" }),
    new ProizvodModel({ id: "m3", name: "Trpezarijski sto", category: "table", dimensions: { width: 160, depth: 80, height: 75 }, image_path: "https://placehold.co/200x140/e8ddd1/5a4a3a?text=Sto", wood_type: "oak", finish: "light" }),
@@ -147,7 +147,7 @@ export default function DizajnEditor() {
   const [points, setPoints] = useState<Point[]>([]);
   const [roomClosed, setRoomClosed] = useState(false);
   const [placedItems, setPlacedItems] = useState<PlacedItem[]>([]);
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<ProizvodModel[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [loading, setLoading] = useState(false);
   const [hoverClose, setHoverClose] = useState(false);
@@ -160,8 +160,10 @@ export default function DizajnEditor() {
     fetch(`https://furniture-api.fly.dev/v1/products?limit=30${cat}`)
       .then((r) => r.json())
       .then((data) => {
-        const items: Product[] = data.data || [];
-        if (items.length > 0) {
+        const items: ProizvodModel[] = (data.data || []).map(
+          (p: any) => new ProizvodModel(p)
+        );
+                if (items.length > 0) {
           setProducts(items);
         } else {
           const filtered = selectedCategory === "all"
@@ -616,4 +618,4 @@ export default function DizajnEditor() {
       </div>
     </div>
   );
-}
+}0

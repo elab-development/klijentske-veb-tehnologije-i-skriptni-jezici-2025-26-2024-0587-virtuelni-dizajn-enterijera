@@ -20,7 +20,7 @@ export class ProizvodModel implements Proizvod {
   wood_type: string;
   finish: string;
 
-  constructor(data: Omit<Proizvod, 'getFormattedDimensions' | 'getFullName'>) {
+  constructor(data: Omit<Proizvod, 'getFormattedDimensions' | 'getFullName' | 'getWoodTypeLabel'>) {
     this.id = data.id;
     this.name = data.name;
     this.category = data.category;
