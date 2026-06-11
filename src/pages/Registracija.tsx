@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
+import Dugme from "../components/Dugme";
 
 export function Register() {
   const [name, setName] = useState("");
@@ -10,8 +11,7 @@ export function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     if (password !== confirmPassword) {
       alert("Passwords don't match!");
       return;
@@ -64,7 +64,7 @@ export function Register() {
           Napravi nalog
         </p>
 
-        <form onSubmit={handleSubmit}>
+        <div>
           <label>Ime i prezime</label>
           <input
             type="text"
@@ -177,23 +177,10 @@ export function Register() {
             </button>
           </div>
 
-          <button
-            type="submit"
-            style={{
-              width: "100%",
-              padding: "14px",
-              backgroundColor: "#2563eb",
-              color: "white",
-              border: "none",
-              borderRadius: "8px",
-              fontSize: "16px",
-              fontWeight: "bold",
-              cursor: "pointer",
-            }}
-          >
-            Napravi nalog
-          </button>
-        </form>
+          <div style ={{ display:"flex",justifyContent: "center" }}>
+            <Dugme tekst="Napravi nalog" onClick={handleSubmit} />
+          </div>
+        </div>
 
         <p
           style={{
