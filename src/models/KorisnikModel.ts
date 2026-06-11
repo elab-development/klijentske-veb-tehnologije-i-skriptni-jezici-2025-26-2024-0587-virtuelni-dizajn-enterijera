@@ -2,17 +2,22 @@ export class KorisnikInfo {
   ime: string;
   email: string;
 
-  constructor(ime: string, email: string) {
+  constructor(ime: string, email:string) {
     this.ime = ime;
     this.email = email;
   }
-
-  toString(): string {
-    return `${this.ime} <${this.email}>`;
-  }
 }
 
-export class Korisnik {
+
+export interface IKorisnik {
+  info: KorisnikInfo;
+  getInitials(): string;
+  isValid(): boolean;
+  toString(): string;
+  
+}
+
+export class Korisnik implements IKorisnik{
   info: KorisnikInfo;
 
   constructor(ime: string, email: string){
