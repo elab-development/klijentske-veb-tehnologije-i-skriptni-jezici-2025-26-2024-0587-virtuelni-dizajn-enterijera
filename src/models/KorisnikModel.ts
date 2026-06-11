@@ -1,4 +1,4 @@
-export class Korisnik {
+export class KorisnikInfo {
   ime: string;
   email: string;
 
@@ -7,15 +7,26 @@ export class Korisnik {
     this.email = email;
   }
 
-  getInitials(): string {
-    return this.ime.split(" ").map((r: string) => r[0]).join("").toUpperCase();
+  toString(): string {
+    return `${this.ime} <${this.email}>`;
+  }
+}
+
+export class Korisnik {
+  info: KorisnikInfo;
+
+  constructor(ime: string, email: string){
+    this.info = new KorisnikInfo(ime, email);
+  }
+
+getInitials(): string {
+    return this.info.ime.split(" ").map((r: string) => r[0]).join("").toUpperCase();
   }
 
   isValid(): boolean {
-    return this.email.includes("@") && this.ime.length > 0;
+    return this.info.email.includes("@") && this.info.ime.length > 0;
   }
-
   toString(): string {
-    return `${this.ime} <${this.email}>`;
+    return this.info.toString();
   }
 }

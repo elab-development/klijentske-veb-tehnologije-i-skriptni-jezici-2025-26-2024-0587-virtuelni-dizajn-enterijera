@@ -41,7 +41,7 @@ const [omiljeneSlike, setOmiljeneSlike] = useState<{ id: number; naziv: string; 
     return;
   }
   const userData = getUserData();
-  localStorage.setItem("user", JSON.stringify({ ...userData, name: korisnik.ime, email: korisnik.email }));
+  localStorage.setItem("user", JSON.stringify({ ...userData, name: korisnik.info.ime, email: korisnik.info.email }));
   setIsEditing(false);
 };
   return (
