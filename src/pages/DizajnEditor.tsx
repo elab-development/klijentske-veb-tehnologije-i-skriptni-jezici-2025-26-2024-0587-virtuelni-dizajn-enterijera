@@ -295,13 +295,15 @@ export default function DizajnEditor() {
     <div
       style={{
         display: "flex",
-        height: "calc(100vh - 65px)",
+        minHeight: "calc(100vh - 65px)",
         marginTop: "90px",
         backgroundColor: "#f7f3ee",
       }}
     >
+     
       
-      <div
+      
+      <div 
         style={{
           width: 250,
           backgroundColor: "#fff",
@@ -326,6 +328,8 @@ export default function DizajnEditor() {
             borderRadius: 8,
             border: "1px solid #ddd",
             fontSize: 13,
+            backgroundColor: "white",
+            color: " #2f2f2f",
           }}
         >
           {CATEGORIES.map((c) => (
@@ -352,7 +356,7 @@ export default function DizajnEditor() {
       
 
       
-      <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+      <div  style={{ flex: 1, display: "flex", flexDirection: "column" }}>
         <div
           style={{
             display: "flex",
