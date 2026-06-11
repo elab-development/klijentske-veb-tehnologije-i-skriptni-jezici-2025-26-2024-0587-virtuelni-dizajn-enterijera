@@ -152,7 +152,7 @@ export default function Galerija() {
           {kategorije.map((kat) => (
             <div
               key={kat.id}
-              onClick={() => setAktivnaKategorija(kat.id)}
+              onClick={() => handleKategorija(kat.id)}
               style={{
                 position: "relative",
                 borderRadius: "16px",
@@ -178,7 +178,7 @@ export default function Galerija() {
       ) : (
         <>
           <div style={{ display: "flex", justifyContent: "center", marginBottom: "30px" }}>
-            <button onClick={() => setAktivnaKategorija(null)} style={{ padding: "10px 28px", backgroundColor: "#4a5568", color: "white", border: "none", borderRadius: "10px" }}>
+            <button onClick={handleNazad} style={{ padding: "10px 28px", backgroundColor: "#4a5568", color: "white", border: "none", borderRadius: "10px" }}>
               ← Nazad na kategorije
             </button>
           </div>

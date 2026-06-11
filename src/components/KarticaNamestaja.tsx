@@ -32,6 +32,9 @@ export default function KarticaNamestaja({ product, onAdd }: KarticaNamestajaPro
       <p style={{ fontSize: 11, color: "#888", margin: "0 0 6px" }}>
         {product.dimensions.width}×{product.dimensions.depth} cm
       </p>
+      <p style= {{ fontSize: 11, color: "#a07850", margin: "0 0 6px"}}>
+        {product.getWoodTypeLabel()}
+      </p>
       <button
         onClick={() => onAdd(product)}
         style={{

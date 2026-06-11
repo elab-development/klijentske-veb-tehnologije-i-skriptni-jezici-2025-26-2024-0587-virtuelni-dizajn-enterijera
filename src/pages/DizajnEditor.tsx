@@ -4,6 +4,7 @@ import type { DragEndEvent } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 import type { Proizvod as Product } from "../models/ProizvodModel";
 import KarticaNamestaja from "../components/KarticaNamestaja";
+import { ProizvodModel } from "../models/ProizvodModel";
 
 interface PlacedItem {
   uid: string;
@@ -39,16 +40,16 @@ const CATEGORY_LABELS: Record<string, string> = {
 };
 
 const MOCK_PRODUCTS: Product[] = [
-  { id: "m1", name: "Sofa Milano", category: "sofa", dimensions: { width: 220, depth: 90, height: 85 }, image_path: "https://placehold.co/200x140/c9b79c/5a4a3a?text=Sofa", price: 899, wood_type: "oak", finish: "natural" },
-  { id: "m2", name: "Fotelja Lux", category: "chair", dimensions: { width: 80, depth: 80, height: 90 }, image_path: "https://placehold.co/200x140/d9c9b8/5a4a3a?text=Fotelja", price: 399, wood_type: "walnut", finish: "dark" },
-  { id: "m3", name: "Trpezarijski sto", category: "table", dimensions: { width: 160, depth: 80, height: 75 }, image_path: "https://placehold.co/200x140/e8ddd1/5a4a3a?text=Sto", price: 549, wood_type: "oak", finish: "light" },
-  { id: "m4", name: "Stolica Moderna", category: "stool", dimensions: { width: 45, depth: 45, height: 80 }, image_path: "https://placehold.co/200x140/c9b79c/5a4a3a?text=Stolica", price: 149, wood_type: "maple", finish: "natural" },
-  { id: "m5", name: "Radni sto", category: "desk", dimensions: { width: 140, depth: 70, height: 75 }, image_path: "https://placehold.co/200x140/b8a898/5a4a3a?text=Desk", price: 449, wood_type: "pine", finish: "light" },
-  { id: "m6", name: "Podna lampa", category: "lamp", dimensions: { width: 40, depth: 40, height: 160 }, image_path: "https://placehold.co/200x140/efe6d8/5a4a3a?text=Lampa", price: 199, wood_type: "bamboo", finish: "natural" },
-  { id: "m7", name: "Ormar 3-krila", category: "wardrove", dimensions: { width: 180, depth: 60, height: 220 }, image_path: "https://placehold.co/200x140/d0c0af/5a4a3a?text=Ormar", price: 799, wood_type: "walnut", finish: "dark" },
-  { id: "m8", name: "Ogledalo Oval", category: "mirror", dimensions: { width: 60, depth: 5, height: 90 }, image_path: "https://placehold.co/200x140/e0d8d0/5a4a3a?text=Ogledalo", price: 249, wood_type: "oak", finish: "medium" },
-  { id: "m9", name: "Kuhinjski island", category: "kitchen", dimensions: { width: 120, depth: 60, height: 90 }, image_path: "https://placehold.co/200x140/c8b8a8/5a4a3a?text=Kuhinja", price: 1199, wood_type: "oak", finish: "light" },
-  { id: "m10", name: "Taburet Okrugli", category: "stool", dimensions: { width: 40, depth: 40, height: 45 }, image_path: "https://placehold.co/200x140/d9c9b8/5a4a3a?text=Taburet", price: 99, wood_type: "cedar", finish: "natural" },
+  new ProizvodModel( { id: "m1", name: "Sofa Milano", category: "sofa", dimensions: { width: 220, depth: 90, height: 85 }, image_path: "https://placehold.co/200x140/c9b79c/5a4a3a?text=Sofa", wood_type: "oak", finish: "natural" }),
+   new ProizvodModel({ id: "m2", name: "Fotelja Lux", category: "chair", dimensions: { width: 80, depth: 80, height: 90 }, image_path: "https://placehold.co/200x140/d9c9b8/5a4a3a?text=Fotelja",  wood_type: "walnut", finish: "dark" }),
+   new ProizvodModel({ id: "m3", name: "Trpezarijski sto", category: "table", dimensions: { width: 160, depth: 80, height: 75 }, image_path: "https://placehold.co/200x140/e8ddd1/5a4a3a?text=Sto", wood_type: "oak", finish: "light" }),
+   new ProizvodModel({ id: "m4", name: "Stolica Moderna", category: "stool", dimensions: { width: 45, depth: 45, height: 80 }, image_path: "https://placehold.co/200x140/c9b79c/5a4a3a?text=Stolica",  wood_type: "maple", finish: "natural" }),
+   new ProizvodModel({ id: "m5", name: "Radni sto", category: "desk", dimensions: { width: 140, depth: 70, height: 75 }, image_path: "https://placehold.co/200x140/b8a898/5a4a3a?text=Desk", wood_type: "pine", finish: "light" }),
+   new ProizvodModel({ id: "m6", name: "Podna lampa", category: "lamp", dimensions: { width: 40, depth: 40, height: 160 }, image_path: "https://placehold.co/200x140/efe6d8/5a4a3a?text=Lampa",  wood_type: "bamboo", finish: "natural" }),
+   new ProizvodModel({ id: "m7", name: "Ormar 3-krila", category: "wardrove", dimensions: { width: 180, depth: 60, height: 220 }, image_path: "https://placehold.co/200x140/d0c0af/5a4a3a?text=Ormar",  wood_type: "walnut", finish: "dark" }),
+   new ProizvodModel({ id: "m8", name: "Ogledalo Oval", category: "mirror", dimensions: { width: 60, depth: 5, height: 90 }, image_path: "https://placehold.co/200x140/e0d8d0/5a4a3a?text=Ogledalo",  wood_type: "oak", finish: "medium" }),
+   new ProizvodModel({ id: "m9", name: "Kuhinjski island", category: "kitchen", dimensions: { width: 120, depth: 60, height: 90 }, image_path: "https://placehold.co/200x140/c8b8a8/5a4a3a?text=Kuhinja",  wood_type: "oak", finish: "light" }),
+   new ProizvodModel({ id: "m10", name: "Taburet Okrugli", category: "stool", dimensions: { width: 40, depth: 40, height: 45 }, image_path: "https://placehold.co/200x140/d9c9b8/5a4a3a?text=Taburet",  wood_type: "cedar", finish: "natural" }),
 ];
 
 function DraggableFurniture({
