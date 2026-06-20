@@ -35,6 +35,7 @@ function AppContent() {
         <Route path="/galerija" element={<Galerija />} />
         <Route path="/dizajn-editor" element={<DizajnEditor />} />
         <Route path="/podaci" element={<Podaci />} />
+        <Route path="*" element={<div>Stranica ne postoji</div>} />
       </Routes>
     </>
   );
