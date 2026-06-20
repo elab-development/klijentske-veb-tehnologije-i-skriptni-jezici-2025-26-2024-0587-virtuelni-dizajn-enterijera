@@ -3,8 +3,8 @@
 Web aplikacija za virtuelni dizajn enterijera, projekat u okviru predmeta Klijentske veb tehnologije i skriptni jezici. Omogućava uređenje prostora u 2D-u, izbor nameštaja i boja, odabir ideja.
 
 ## Pokretanje projekta
-npm install
-npm run dev
+-npm install
+-npm run dev
 
 ## Tehnologije
 
